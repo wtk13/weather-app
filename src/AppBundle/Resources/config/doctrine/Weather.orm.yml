@@ -1,0 +1,64 @@
+AppBundle\Entity\Weather:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\WeatherRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        lat:
+            type: decimal
+            precision: 4
+            scale: 2
+        lng:
+            type: decimal
+            precision: 5
+            scale: 2
+        cityId:
+            type: integer
+            column: city_id
+        cityName:
+            type: string
+            length: 255
+            column: city_name
+        temp:
+            type: float
+        pressure:
+            type: smallint
+        humidity:
+            type: smallint
+        tempMin:
+            type: float
+            column: temp_min
+        tempMax:
+            type: float
+            column: temp_max
+        windSpeed:
+            type: float
+            column: wind_speed
+        windDeg:
+            type: float
+            column: wind_deg
+            nullable: true
+        clouds:
+            type: smallint
+        rainOneH:
+            type: smallint
+            column: rain_one_h
+            nullable: true
+        rainThreeH:
+            type: smallint
+            column: rain_three_h
+            nullable: true
+        snowOneH:
+            type: smallint
+            column: snow_one_h
+            nullable: true
+        snowThreeH:
+            type: smallint
+            column: snow_three_h
+            nullable: true
+    lifecycleCallbacks: {  }
