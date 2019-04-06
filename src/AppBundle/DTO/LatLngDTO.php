@@ -9,6 +9,8 @@ class LatLngDTO
 {
     /**
      * @var float
+     *
+     * @Assert\NotBlank()
      * @Assert\Type(type="float")
      * @Assert\LessThanOrEqual(value="90")
      * @Assert\GreaterThanOrEqual(value="-90")
@@ -17,6 +19,8 @@ class LatLngDTO
 
     /**
      * @var float
+     *
+     * @Assert\NotBlank()
      * @Assert\Type(type="float")
      * @Assert\LessThanOrEqual(value="180")
      * @Assert\GreaterThanOrEqual(value="-180")

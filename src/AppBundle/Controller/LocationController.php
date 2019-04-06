@@ -21,6 +21,6 @@ class LocationController extends BaseController
             $this->throwApiProblemValidationException($form);
         }
 
-        return $this->createApiResponse($latLngDTO);
+        return $this->createApiResponse($latLngDTO, 201);
     }
 }
