@@ -14,8 +14,8 @@ class LocationControllerTest extends WebTestCase
         $client = static::createClient();
 
         $data = [
-            'lat' => 88.55,
-            'lng' => 99.2
+            'lat' => 52.17,
+            'lng' => 20.92
         ];
 
         $client->request(
@@ -29,6 +29,8 @@ class LocationControllerTest extends WebTestCase
             json_encode($data)
         );
 
+        $body = json_decode($client->getResponse()->getContent(), true);
+
         $this->assertEquals(201, $client->getResponse()->getStatusCode());
         $this->assertTrue(
             $client->getResponse()->headers->contains(
@@ -37,6 +39,21 @@ class LocationControllerTest extends WebTestCase
             ),
             'the "Content-Type" header is "application/json"'
         );
+        $this->assertEquals(52.17, $body['lat']);
+        $this->assertEquals(20.92, $body['lng']);
+        $this->assertEquals('Załuski', $body['name']);
+        $this->assertArrayHasKey('temp', $body);
+        $this->assertArrayHasKey('pressure', $body);
+        $this->assertArrayHasKey('humidity', $body);
+        $this->assertArrayHasKey('tempMin', $body);
+        $this->assertArrayHasKey('tempMax', $body);
+        $this->assertArrayHasKey('windSpeed', $body);
+        $this->assertArrayHasKey('windDeg', $body);
+        $this->assertArrayHasKey('clouds', $body);
+        $this->assertArrayHasKey('rainOneH', $body);
+        $this->assertArrayHasKey('rainThreeH', $body);
+        $this->assertArrayHasKey('snowOneH', $body);
+        $this->assertArrayHasKey('snowThreeH', $body);
     }
 
     public function testPOSTValidationErorLatLngGreater()

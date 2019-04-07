@@ -5,12 +5,13 @@ namespace AppBundle\Controller;
 
 use AppBundle\DTO\LatLngDTO;
 use AppBundle\Form\LatLngType;
+use AppBundle\Processor\LocationProcessor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class LocationController extends BaseController
 {
-    public function addAction(Request $request): Response
+    public function addAction(Request $request, LocationProcessor $locationProcessor): Response
     {
         $latLngDTO = new LatLngDTO();
 
@@ -21,6 +22,6 @@ class LocationController extends BaseController
             $this->throwApiProblemValidationException($form);
         }
 
-        return $this->createApiResponse($latLngDTO, 201);
+        return $this->createApiResponse($locationProcessor->process($latLngDTO), 201);
     }
 }

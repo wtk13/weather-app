@@ -1,0 +1,13 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: weather_test
+    database_user: root
+    database_password: donkage
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: 82c687775d2ba6f3203d0b2de0cd18af33cdea14
+    open_weather_map_api_key: 739f64dff99e662803ec9a6f6445af8d

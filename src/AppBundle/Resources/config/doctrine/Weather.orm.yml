@@ -17,17 +17,13 @@ AppBundle\Entity\Weather:
             type: decimal
             precision: 5
             scale: 2
-        cityId:
-            type: integer
-            column: city_id
-        cityName:
+        name:
             type: string
             length: 255
-            column: city_name
         temp:
             type: float
         pressure:
-            type: smallint
+            type: float
         humidity:
             type: smallint
         tempMin:
@@ -46,19 +42,19 @@ AppBundle\Entity\Weather:
         clouds:
             type: smallint
         rainOneH:
-            type: smallint
+            type: float
             column: rain_one_h
             nullable: true
         rainThreeH:
-            type: smallint
+            type: float
             column: rain_three_h
             nullable: true
         snowOneH:
-            type: smallint
+            type: float
             column: snow_one_h
             nullable: true
         snowThreeH:
-            type: smallint
+            type: float
             column: snow_three_h
             nullable: true
     lifecycleCallbacks: {  }
