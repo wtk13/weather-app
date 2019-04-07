@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace AppBundle\Manager;
 
 use AppBundle\DTO\LocationDTO;
+use AppBundle\DTO\SummaryDTO;
 use AppBundle\Entity\Weather;
 use AppBundle\Repository\WeatherRepository;
 
@@ -52,6 +53,19 @@ class WeatherManager
             $allItemsCount,
             $page,
             $pages
+        );
+    }
+
+    public function summary(): SummaryDTO
+    {
+        $summaryData = $this->weatherRepository
+            ->summary();
+
+        return new SummaryDTO(
+            (int) $summaryData['howMany'],
+            (float) $summaryData['tempMin'],
+            (float) $summaryData['tempMax'],
+            (float) $summaryData['tempAvg']
         );
     }
 }

@@ -6,3 +6,7 @@ list:
     path: /list
     defaults: { _controller: AppBundle:Location:list }
     methods: [GET]
+summary:
+    path: /summary
+    defaults: { _controller: AppBundle:Location:summary }
+    methods: [GET]

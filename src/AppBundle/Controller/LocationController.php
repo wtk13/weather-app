@@ -26,10 +26,15 @@ class LocationController extends BaseController
         return $this->createApiResponse($locationProcessor->process($latLngDTO), 201);
     }
 
-    public function listAction(Request $request, WeatherManager $weatherManager)
+    public function listAction(Request $request, WeatherManager $weatherManager): Response
     {
         $page = $request->query->getInt('page', 1);
 
         return $this->createApiResponse($weatherManager->list($page));
+    }
+
+    public function summaryAction(WeatherManager $weatherManager): Response
+    {
+        return $this->createApiResponse($weatherManager->summary());
     }
 }

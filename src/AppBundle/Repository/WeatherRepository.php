@@ -51,4 +51,15 @@ class WeatherRepository extends ServiceEntityRepository
             ->execute()
             ->fetchColumn();
     }
+
+    public function summary(): array
+    {
+        return $this->_em
+            ->getConnection()
+            ->createQueryBuilder()
+            ->select('count(id) as howMany, round(min(temp_min), 2) as tempMin, round(max(temp_max), 2) as tempMax, round(avg(temp), 2) as tempAvg')
+            ->from('weather')
+            ->execute()
+            ->fetch();
+    }
 }

@@ -240,6 +240,40 @@ class LocationControllerTest extends WebTestCase
         $this->assertEquals(2, $body['pages']);
     }
 
+    public function testGETsummary()
+    {
+        $this->createLocations();
+
+        $this->client->request(
+            Request::METHOD_GET,
+            '/summary'
+        );
+
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+
+        $body = json_decode($this->client->getResponse()->getContent(), true);
+        $this->assertEquals(13, $body['count']);
+        $this->assertEquals(0.61, $body['tempMin']);
+        $this->assertEquals(16.11, $body['tempMax']);
+        $this->assertEquals(10.92, $body['tempAvg']);
+    }
+
+    public function testGETsummaryWithNoData()
+    {
+        $this->client->request(
+            Request::METHOD_GET,
+            '/summary'
+        );
+
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+
+        $body = json_decode($this->client->getResponse()->getContent(), true);
+        $this->assertEquals(0, $body['count']);
+        $this->assertEquals(0, $body['tempMin']);
+        $this->assertEquals(0, $body['tempMax']);
+        $this->assertEquals(0, $body['tempAvg']);
+    }
+
     private function createLocations()
     {
         $test =
