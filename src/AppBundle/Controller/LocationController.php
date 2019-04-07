@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\DTO\LatLngDTO;
 use AppBundle\Form\LatLngType;
+use AppBundle\Manager\WeatherManager;
 use AppBundle\Processor\LocationProcessor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,5 +24,12 @@ class LocationController extends BaseController
         }
 
         return $this->createApiResponse($locationProcessor->process($latLngDTO), 201);
+    }
+
+    public function listAction(Request $request, WeatherManager $weatherManager)
+    {
+        $page = $request->query->getInt('page', 1);
+
+        return $this->createApiResponse($weatherManager->list($page));
     }
 }

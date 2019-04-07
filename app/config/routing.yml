@@ -2,3 +2,7 @@ add:
     path: /add
     defaults: { _controller: AppBundle:Location:add }
     methods: [POST]
+list:
+    path: /list
+    defaults: { _controller: AppBundle:Location:list }
+    methods: [GET]

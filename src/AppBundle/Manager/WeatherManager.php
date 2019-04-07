@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace AppBundle\Manager;
 
+use AppBundle\DTO\LocationDTO;
 use AppBundle\Entity\Weather;
 use AppBundle\Repository\WeatherRepository;
 
@@ -39,5 +40,18 @@ class WeatherManager
             ->save($weather);
 
         return $weather;
+    }
+
+    public function list(int $page): LocationDTO
+    {
+        $allItemsCount = $this->weatherRepository->count();
+        $pages = (int) ceil($allItemsCount / WeatherRepository::LIMIT);
+
+        return new LocationDTO(
+            $this->weatherRepository->findAllWithPagination($page),
+            $allItemsCount,
+            $page,
+            $pages
+        );
     }
 }
