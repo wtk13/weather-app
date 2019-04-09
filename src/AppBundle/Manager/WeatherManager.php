@@ -61,11 +61,15 @@ class WeatherManager
         $summaryData = $this->weatherRepository
             ->summary();
 
+        $mostSearchPlace = $this->weatherRepository
+            ->mostSearchPlace();
+
         return new SummaryDTO(
             (int) $summaryData['howMany'],
             (float) $summaryData['tempMin'],
             (float) $summaryData['tempMax'],
-            (float) $summaryData['tempAvg']
+            (float) $summaryData['tempAvg'],
+            $mostSearchPlace
         );
     }
 }

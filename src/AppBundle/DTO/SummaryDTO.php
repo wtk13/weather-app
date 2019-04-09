@@ -6,7 +6,7 @@ namespace AppBundle\DTO;
 class SummaryDTO
 {
     /** @var int */
-    private $count = 0;
+    private $howMany = 0;
 
     /** @var float */
     private $tempMin = 0;
@@ -17,20 +17,24 @@ class SummaryDTO
     /** @var float */
     private $tempAvg = 0;
 
-    public function __construct(int $count, float $tempMin, float $tempMax, float $tempAvg)
+    /** @var string */
+    private $mostSearchPlace;
+
+    public function __construct(int $count, float $tempMin, float $tempMax, float $tempAvg, string $mostSearchPlace)
     {
-        $this->count = $count;
+        $this->howMany = $count;
         $this->tempMin = $tempMin;
         $this->tempMax = $tempMax;
         $this->tempAvg = $tempAvg;
+        $this->mostSearchPlace = $mostSearchPlace;
     }
 
     /**
      * @return int
      */
-    public function getCount(): int
+    public function getHowMany(): int
     {
-        return $this->count;
+        return $this->howMany;
     }
 
     /**
@@ -55,5 +59,13 @@ class SummaryDTO
     public function getTempAvg(): float
     {
         return $this->tempAvg;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMostSearchPlace(): string
+    {
+        return $this->mostSearchPlace;
     }
 }

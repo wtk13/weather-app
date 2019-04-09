@@ -62,4 +62,18 @@ class WeatherRepository extends ServiceEntityRepository
             ->execute()
             ->fetch();
     }
+
+    public function mostSearchPlace(): string
+    {
+        return (string) $this->_em
+            ->getConnection()
+            ->createQueryBuilder()
+            ->select('name')
+            ->from('weather')
+            ->groupBy('name')
+            ->setMaxResults(1)
+            ->orderBy('count(id)', 'DESC')
+            ->execute()
+            ->fetchColumn();
+    }
 }
