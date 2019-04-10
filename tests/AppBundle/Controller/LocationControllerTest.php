@@ -252,10 +252,12 @@ class LocationControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
 
         $body = json_decode($this->client->getResponse()->getContent(), true);
-        $this->assertEquals(13, $body['count']);
+
+        $this->assertEquals(13, $body['howMany']);
         $this->assertEquals(0.61, $body['tempMin']);
         $this->assertEquals(16.11, $body['tempMax']);
         $this->assertEquals(10.92, $body['tempAvg']);
+        $this->assertEquals('Załuski', $body['mostSearchPlace']);
     }
 
     public function testGETsummaryWithNoData()
@@ -268,10 +270,11 @@ class LocationControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
 
         $body = json_decode($this->client->getResponse()->getContent(), true);
-        $this->assertEquals(0, $body['count']);
+        $this->assertEquals(0, $body['howMany']);
         $this->assertEquals(0, $body['tempMin']);
         $this->assertEquals(0, $body['tempMax']);
         $this->assertEquals(0, $body['tempAvg']);
+        $this->assertEquals('', $body['mostSearchPlace']);
     }
 
     private function createLocations()

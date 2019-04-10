@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container top-margin">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jumbotron">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Most popular place
+                            <span class="badge badge-primary badge-pill" id="place"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Searches
+                            <span class="badge badge-primary badge-pill" id="searches"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Max temp
+                            <span class="badge badge-primary badge-pill" id="max-temp"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Min temp
+                            <span class="badge badge-primary badge-pill" id="min-temp"></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Avg temp
+                            <span class="badge badge-primary badge-pill" id="avg-temp"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="history">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="w-25">Lat</th>
+                            <th scope="col" class="w-25">Lng</th>
+                            <th scope="col" class="w-50">Name</th>
+                            <th scope="col" class="w-25">Temp</th>
+                            <th scope="col" class="w-25">Pressure</th>
+                            <th scope="col" class="w-25">Humidity</th>
+                            <th scope="col" class="w-25">Temp min</th>
+                            <th scope="col" class="w-25">Temp max</th>
+                            <th scope="col" class="w-25">Wind speed</th>
+                            <th scope="col" class="w-25">Wind deg</th>
+                            <th scope="col" class="w-25">Clouds</th>
+                            <th scope="col" class="w-25">Rain in 1 hour</th>
+                            <th scope="col" class="w-25">Rain in 3 hour</th>
+                            <th scope="col" class="w-25">Snow in 1 hour</th>
+                            <th scope="col" class="w-25">Snow in 3 hour</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <nav aria-label="Page navigation example" id="pagination">
+
+                </nav>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('history') }}
+{% endblock %}
