@@ -23,7 +23,6 @@ function getData(page) {
                 $('#pagination').empty();
             },
             success: function (data) {
-                console.log(data);
                 var trHTML = '';
 
                 $.each(data.items, function (i, item) {
